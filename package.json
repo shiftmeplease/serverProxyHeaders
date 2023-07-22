@@ -1,0 +1,16 @@
+{
+  "name": "serverproxyheaders",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Simple nodejs server for retrieving proxy headers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.20.0"
+  }
+}
