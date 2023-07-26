@@ -1,5 +1,4 @@
 import Fastify from "fastify";
-pro
 const port = 8888;
 
 const filterHeaders = [
@@ -11,6 +10,7 @@ const filterHeaders = [
   "cdn-loop",
   "cookie",
   "x-real-ip",
+  "cfbypass",
 ];
 
 const fastify = Fastify({
@@ -36,6 +36,9 @@ fastify.get("/", (req, reply) => {
     }
     result[headerName] = value;
   }
+  //cf have same x forwarded ip as connecting ip, so if not - it is used by proxy
+
+  result.isproxy = req.headers["x-forwarded-for"] !== req.headers["cf-connecting-ip"];
   reply.send(result);
 });
 
