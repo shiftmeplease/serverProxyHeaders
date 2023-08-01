@@ -1,5 +1,4 @@
 import Fastify from "fastify";
-import oneMBString from "./1mb.js";
 const port = 8888;
 
 const filterHeaders = [
@@ -40,7 +39,6 @@ fastify.get("/", (req, reply) => {
   //cf have same x forwarded ip as connecting ip, so if not - it is used by proxy
 
   result.isproxy = req.headers["x-forwarded-for"] !== req.headers["cf-connecting-ip"];
-  result.sizePayload = oneMBString;
   reply.send(result);
 });
 
